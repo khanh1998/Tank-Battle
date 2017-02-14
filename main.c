@@ -1,5 +1,10 @@
 #include <windows.h>
 #include <stdio.h>
+typedef struct{
+    int x;
+    int y;
+}coordinate;
+
 #include "sources/intro/intro.h"
 #include "sources/intro/effect.h"
 #include "sources/intro/printfLetter.h"
