@@ -1,28 +1,24 @@
 #include <windows.h>
-#include <stdio.h>
-typedef struct{
-    int x;
-    int y;
-}coordinate;
-
+#include <time.h>
 #include "sources/intro/intro.h"
-#include "sources/intro/effect.h"
-#include "sources/intro/printfLetter.h"
+#include "sources/init/init.h"
 
 #define WIDTH 80
 #define HIGHT 40
-
+/*
+typedef enum direction Direc;
 enum direction {
     TOP, RIGHT, DOWN, LEFT
 };
 
 typedef struct {
-    enum direction direc;
+    Direc direc;
     int line;
     int column;
 } info;
-
-info tanks[10];
+*/
+int numOfTank = 5;
+info tank[10];
 info bulets[200];
 int tankPositive[39][79];
 
@@ -45,20 +41,20 @@ int main(int argc, char const * argv[]){
     //array of console buffer
     CHAR_INFO consoleBuffer[HIGHT][WIDTH];
 
-    // init game
-    //init_game();
-    clearScreen(consoleBuffer);
-    Letter_A(consoleBuffer, 10, 10, 4);
-    getchar();
-    clearScreen(consoleBuffer);
-    effect(consoleBuffer);
-    clearScreen(consoleBuffer);
-    chuyendong(consoleBuffer);
 
-    /*COORD charBufSize = {WIDTH, HIGHT};
+    // intro the game
+    intro(consoleBuffer);
+    // init game
+    init(consoleBuffer, tank);
+
+
+
+    COORD charBufSize = {WIDTH, HIGHT};
     COORD charPos = {0, 0};
     SMALL_RECT writeArea = {0, 0, WIDTH - 1, HIGHT - 1};
-    WriteConsoleOutputA(whnd, consoleBuffer, charBufSize, charPos, &writeArea); */
+    WriteConsoleOutputA(whnd, consoleBuffer, charBufSize, charPos, &writeArea);
+
+    Sleep(10000);
 
     return 0;
 }
