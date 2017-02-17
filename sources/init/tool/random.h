@@ -3,6 +3,6 @@
 
 
 int random_20 ();
-int random_76 ();
+int random_73 ();
 Direc random_DIREC ();
 

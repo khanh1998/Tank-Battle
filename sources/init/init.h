@@ -12,4 +12,5 @@ typedef struct {
 
 
 
-void init (CHAR_INFO consoleBuffer[HIGHT][WIDTH], info tank[]);
+
+void init (CHAR_INFO consoleBuffer[HIGHT][WIDTH], info tank[], int numOfTank);

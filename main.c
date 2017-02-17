@@ -5,22 +5,12 @@
 
 #define WIDTH 80
 #define HIGHT 40
-/*
-typedef enum direction Direc;
-enum direction {
-    TOP, RIGHT, DOWN, LEFT
-};
 
-typedef struct {
-    Direc direc;
-    int line;
-    int column;
-} info;
-*/
 int numOfTank = 5;
 info tank[10];
 info bulets[200];
 int tankPositive[39][79];
+int play = 1;
 
 int main(int argc, char const * argv[]){
     // init console screen
@@ -41,20 +31,23 @@ int main(int argc, char const * argv[]){
     //array of console buffer
     CHAR_INFO consoleBuffer[HIGHT][WIDTH];
 
+    while (play){
+        // intro the game
+        intro(consoleBuffer);
+        // init game
+        init(consoleBuffer, tank, numOfTank);
+        // game loop
 
-    // intro the game
-    intro(consoleBuffer);
-    // init game
-    init(consoleBuffer, tank);
 
 
-
-    COORD charBufSize = {WIDTH, HIGHT};
-    COORD charPos = {0, 0};
-    SMALL_RECT writeArea = {0, 0, WIDTH - 1, HIGHT - 1};
-    WriteConsoleOutputA(whnd, consoleBuffer, charBufSize, charPos, &writeArea);
-
-    Sleep(10000);
+        COORD charBufSize = {WIDTH, HIGHT};
+        COORD charPos = {0, 0};
+        SMALL_RECT writeArea = {0, 0, WIDTH - 1, HIGHT - 1};
+        WriteConsoleOutputA(whnd, consoleBuffer, charBufSize, charPos, &writeArea);
+        getchar();
+        //Sleep(100000);
+    }
+    
 
     return 0;
 }
